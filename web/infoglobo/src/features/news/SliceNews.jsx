@@ -1,8 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+import axios from 'axios';
+
 export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  const news = await response.json();
+  const response = await axios.get("http://localhost:3000/noticia/", {"Access-Control-Allow-Origin": "*"});
+
+  const news = await response.data.json();
   return news;
 });
 
