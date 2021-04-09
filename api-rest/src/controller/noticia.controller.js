@@ -1,6 +1,7 @@
 const Noticia = require('../model/noticia.model');
 
 exports.create = (req, res) => {
+	console.log(req.body)
 	let noticia = new Noticia(
 		{
 			titulo: req.body.titulo,
@@ -9,16 +10,13 @@ exports.create = (req, res) => {
 		}
 	);
 	noticia.save((err) => {
-		if (err) {
-			console.log(err)
-		}
+		if (err) return next(err);
 		res.send('Notícia criada com sucesso')
 	})
 };
 
 exports.findById = (req, res) => {
-	let id = req.params.id;
-	Noticia.findById(id, function (err, noticia) {
+	Noticia.findById(req.params.id, function (err, noticia) {
 		if (err) return next(err);
 		res.send(noticia);
 	})
@@ -26,26 +24,21 @@ exports.findById = (req, res) => {
 
 exports.findAll = (req, res) => {
 	Noticia.find((err, noticias) => {
-		if (err) {
-			console.log(err)
-		}
+		if (err) return next(err);
 		res.send(noticias);
 	})
 };
 
-exports.update = (req, res) => {
-	let id = req.params.id;
-	let noticia = new Noticia(
-		{
-			titulo: req.body.titulo,
-			conteudo: req.body.conteudo,
-			dataPublicacao: req.body.dataPublicacao
-		}
-	);
-	noticia.findByIdAndUpdate(id, noticia, {new: true}, (err, newNoticia) => {
-		if (err) {
-			console.log(err)
-		}
-		res.send(newNoticia)
-	})
+exports.update = function (req, res) {
+    Noticia.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, noticia) {
+        if (err) return next(err);
+        res.send('Notícia atualizada com sucesso');
+    });
+};
+
+exports.delete = function (req, res) {
+    Noticia.findByIdAndRemove(req.params.id, function (err) {
+        if (err) return next(err);
+        res.send('Notícia deletada com sucesso');
+    })
 };
