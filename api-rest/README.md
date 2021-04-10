@@ -25,7 +25,7 @@
 $ git clone <https://github.com/rafaelaandrews/Infoglobo-challenge>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge
+$ cd Infoglobo-challenge/api-rest
 
 # Instale as dependências
 $ npm install
@@ -46,10 +46,10 @@ Antes de começar, você precisará ter instalado em sua máquina as seguintes f
 
 ```bash
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge
+$ cd Infoglobo-challenge/api-rest
 
 # Execute a aplicação em modo de desenvolvimento
-$ npm run dev
+$ npm start
 
 # O servidor inciará na porta:3000 - acesse <HTTP://localhost:3000/>
 ```
@@ -58,7 +58,7 @@ $ npm run dev
 
 ```bash
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge
+$ cd Infoglobo-challenge/api-rest
 
 # Construa sua imagem docker
 $ docker build -t challenge/infoglobo-api .
@@ -79,7 +79,7 @@ $ docker <stop|start|kill> infogloboApi
 ```bash
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge
+$ cd Infoglobo-challenge/api-rest
 
 # Instale as dependências
 $ npm install
