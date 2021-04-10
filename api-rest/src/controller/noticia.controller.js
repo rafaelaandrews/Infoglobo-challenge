@@ -1,51 +1,51 @@
-const Noticia = require('../model/noticia.model');
+const noticiaService = require('../service/noticia.service');
 
-exports.create = (req, res) => {
-	let noticia = new Noticia(
-		{
-			titulo: req.body.titulo,
-			conteudo: req.body.conteudo,
-			dataPublicacao: req.body.dataPublicacao
-		}
-	);
-	noticia.save((err) => {
-		if (err) {
-			console.log(err)
-		}
-		res.send('Notícia criada com sucesso')
-	})
+exports.create = async (req, res, next) => {
+	try {
+		let result = await noticiaService.create(req, res, next);
+	
+		res.status(201).send(result);
+	} catch (error) {
+		next(error);
+	}
 };
 
-exports.findById = (req, res) => {
-	let id = req.params.id;
-	Noticia.findById(id, function (err, noticia) {
-		if (err) return next(err);
-		res.send(noticia);
-	})
+exports.findById = async (req, res, next) => {
+	try {
+		let result = await noticiaService.findById(req, res, next);
+	
+		res.status(200).send(result);
+	} catch (error) {
+		next(error);
+	}
 };
 
-exports.findAll = (req, res) => {
-	Noticia.find((err, noticias) => {
-		if (err) {
-			console.log(err)
-		}
-		res.send(noticias);
-	})
+exports.findAll = async (req, res, next) => {
+	try {
+		let result = await noticiaService.findAll(req, res, next);
+	
+		res.status(200).send(result);
+	} catch (error) {
+		next(error);
+	}
 };
 
-exports.update = (req, res) => {
-	let id = req.params.id;
-	let noticia = new Noticia(
-		{
-			titulo: req.body.titulo,
-			conteudo: req.body.conteudo,
-			dataPublicacao: req.body.dataPublicacao
-		}
-	);
-	noticia.findByIdAndUpdate(id, noticia, {new: true}, (err, newNoticia) => {
-		if (err) {
-			console.log(err)
-		}
-		res.send(newNoticia)
-	})
+exports.update = async (req, res, next) => {
+	try {
+		let result = await noticiaService.updateById(req, res, next);
+	
+		res.status(200).send(result);
+	} catch (error) {
+		next(error);
+	}
+};
+
+exports.delete = async (req, res, next) => {
+	try {
+		let result = await noticiaService.deleteById(req, res, next);
+	
+		res.status(200).send(result);
+	} catch (error) {
+		next(error);
+	}
 };

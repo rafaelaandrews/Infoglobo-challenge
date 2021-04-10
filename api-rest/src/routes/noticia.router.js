@@ -9,8 +9,8 @@ router.get('/:id', noticiaController.findById);
 
 router.post('/create', noticiaController.create);
 
-//router.put('/update/:id', noticiaController.update);
+router.put('/update/:id', noticiaController.update);
 
-//router.delete('/delete/:id', noticiaController.delete);
+router.delete('/delete/:id', noticiaController.delete);
 
 module.exports = router;
