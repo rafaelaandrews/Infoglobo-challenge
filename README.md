@@ -1,6 +1,8 @@
-# Portal de Notícias
+# API REST de Notícias
 
-### frontend em React do desafio técnico proposto durante o processo seletivo para vaga de desenvolvedor fullStack na Infoglobo.
+### Projeto composto por um frontend em React e o backend em Node.js com acesso remoto ao MongoDB. 
+### Este projeto foi proposto durante o processo seletivo para vaga de desenvolvedor fullStack na Infoglobo. ### Para rodar o backend e o frontend individualmente, acesse o README.md de cada um.
+
 <br/>
 
 ## 🔗 Tabela de conteúdo
@@ -23,7 +25,7 @@
 $ git clone <https://github.com/rafaelaandrews/Infoglobo-challenge>
 
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge/web/infoglobo
+$ cd Infoglobo-challenge
 
 # Instale as dependências
 $ npm install
@@ -34,40 +36,25 @@ $ npm install
 ## Pré-requisitos
 
 Antes de começar, você precisará ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Docker](https://www.docker.com/).
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [Docker](https://www.docker.com/).
 
 ---
 
 ## Execução
 
-### desenvolvimento
-
-```bash
-# Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge/web/infoglobo
-
-# Execute a aplicação em modo de desenvolvimento
-$ npm start
-
-# O servidor inciará na porta:3000 - acesse <HTTP://localhost:3000/>
-```
-
 ### Produção(DockerFile)
 
 ```bash
 # Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge/web/infoglobo
+$ cd Infoglobo-challenge
 
 # Construa sua imagem docker
-$ docker build -t challenge/infoglobo-web .
+$ docker-compose up -d
 
-# Rode seu container com a imagem criada
-$ docker run --name infogloboWeb -p 8080:3000 -d challenge/infoglobo-web
+# Acesse <HTTP://localhost:80/>
 
-# O servidor inciará na porta:8080 - acesse <HTTP://localhost:8080/>
-
-# Para parar/reiniciar/excluir container:
-$ docker <stop|start|kill> infogloboWeb
+# Para parar a execução:
+$ docker-compose stop 
 ```
 
 ---
@@ -75,6 +62,14 @@ $ docker <stop|start|kill> infogloboWeb
 ## Tecnologias
 
 👉 [Npm](https://www.npmjs.com/)
+
+👉 [Node](https://nodejs.org/en/)
+
+👉 [Express](https://expressjs.com/)
+
+👉 [Mocha](https://mochajs.org/)
+
+👉 [Chai](https://www.chaijs.com/)
 
 👉 [Docker](https://www.docker.com/)
 
