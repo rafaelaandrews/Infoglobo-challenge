@@ -1,10 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
 
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+
+import { makeStyles } from '@material-ui/core/styles';
+
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import { newsAdded } from "../news/SliceNews";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
+
 export function AddNews() {
+  const classes = useStyles();
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -43,28 +59,23 @@ export function AddNews() {
 
   return (
     <div className="container">
-      <div className="row">
-        <h1>Adicionar Notícia</h1>
+      <div className={classes.root}>
+        <Typography variant="h3">Adicionar Notícia</Typography>
       </div>
+      <br/>
       <div className="row">
-        <div className="three columns">
           <label htmlFor="titleInput">Título</label>
-          <input
-            className="u-full-width"
-            type="text"
-            id="titleInput"
-            onChange={handleTitle}
-            value={title}
-          />
+          <TextField onChange={handleTitle} value={title} id="titleInput" variant="outlined" />
+        </div>
+        <br/>
+        <div className="row">
           <label htmlFor="contentInput">Conteúdo</label>
-          <input
-            className="u-full-width"
-            type="text"
-            id="contentInput"
-            onChange={handleContent}
-            value={content}
-          />
+          <TextField onChange={handleContent} value={content} id="contentInput" variant="outlined" />
+        </div>
+        <br/>
+        <div className="row">
           <label htmlFor="publicationDateInput">Data de publicação</label>
+          <TextField onChange={handleTitle} value={content} id="contentInput" variant="outlined" />
           <input
             className="u-full-width"
             type="date"
@@ -72,12 +83,14 @@ export function AddNews() {
             onChange={handlePublicationDate}
             value={publicationDate}
           />
-          {error && error}
-          <button onClick={handleClick} className="button-primary">
-            Salvar
-          </button>
         </div>
-      </div>
+        <br/>
+        <div className="row">
+          {error && error}
+          <Button onClick={handleClick} variant="contained" color="primary">
+            Salvar
+          </Button>
+        </div>
     </div>
   );
 }

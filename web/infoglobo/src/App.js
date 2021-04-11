@@ -9,7 +9,7 @@ import React from "react";
 export default function App() {
   return (
     <Router>
-      <div>
+      <div className="App">
         <Switch>
           <Route path="/add-news">
             <AddNews />
