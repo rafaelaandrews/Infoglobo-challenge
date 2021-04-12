@@ -4,8 +4,8 @@ import axios from 'axios';
 
 export const fetchNews = createAsyncThunk("news/fetchNews", async () => {
   const response = await axios.get("http://localhost:3000/noticia/", {"Access-Control-Allow-Origin": "*"});
-
-  const news = await response.data.json();
+  const news = await response.json();
+  
   return news;
 });
 
@@ -20,12 +20,12 @@ const newsSlice = createSlice({
       state.entities.push(action.payload);
     },
     newsUpdated(state, action) {
-      const { id, title, content, publicationDate } = action.payload;
+      const { id, title, content, date } = action.payload;
       const existingNews = state.entities.find((news) => news.id === id);
       if (existingNews) {
         existingNews.title = title;
         existingNews.content = content;
-        existingNews.publicationDate = publicationDate;
+        existingNews.date = date;
       }
     },
     newsDeleted(state, action) {

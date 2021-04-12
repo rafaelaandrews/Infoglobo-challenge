@@ -2,7 +2,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
-import { fetchNews } from "./features/news/SliceNews";
+import { fetchNews } from "./features/news/newsSlice";
 import store from "./store";
 
 store.dispatch(fetchNews());

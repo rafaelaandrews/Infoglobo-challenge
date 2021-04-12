@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { newsAdded } from "../news/SliceNews";
+import { newsAdded } from "./newsSlice";
 
 export function AddNews() {
   const dispatch = useDispatch();
@@ -10,23 +10,23 @@ export function AddNews() {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [publicationDate, setPublicationDate] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState(null);
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleContent = (e) => setContent(e.target.value);
-  const handlePublicationDate = (e) => setPublicationDate(e.target.value);
+  const handleDate = (e) => setDate(e.target.value);
 
   const newsAmount = useSelector((state) => state.news.entities.length);
 
   const handleClick = () => {
-    if (title && content && publicationDate) {
+    if (title && content && date) {
       dispatch(
         newsAdded({
           id: newsAmount + 1,
           title,
           content,
-          publicationDate
+          date
         })
       );
 
@@ -38,7 +38,7 @@ export function AddNews() {
 
     setTitle("");
     setContent("");
-    setPublicationDate("");
+    setDate("");
   };
 
   return (
@@ -64,13 +64,13 @@ export function AddNews() {
             onChange={handleContent}
             value={content}
           />
-          <label htmlFor="publicationDateInput">Data de publicação</label>
+          <label htmlFor="dateInput">Data de Publicação</label>
           <input
             className="u-full-width"
             type="date"
-            id="publicationDateInput"
-            onChange={handlePublicationDate}
-            value={publicationDate}
+            id="dateInput"
+            onChange={handleDate}
+            value={date}
           />
           {error && error}
           <button onClick={handleClick} className="button-primary">
