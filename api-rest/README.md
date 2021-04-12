@@ -51,7 +51,7 @@ $ cd Infoglobo-challenge/api-rest
 # Execute a aplicação em modo de desenvolvimento
 $ npm start
 
-# O servidor inciará na porta:3001 - acesse <HTTP://localhost:3001/>
+# O servidor inciará na porta:3000 - acesse <HTTP://localhost:3000/>
 ```
 
 ### Produção(DockerFile)
@@ -64,7 +64,7 @@ $ cd Infoglobo-challenge/api-rest
 $ docker build -t challenge/infoglobo-api .
 
 # Rode seu container com a imagem criada
-$ docker run --name infogloboApi -p 8080:3001 -d challenge/infoglobo-api
+$ docker run --name infogloboApi -p 8080:3000 -d challenge/infoglobo-api
 
 # O servidor inciará na porta:8080 - acesse <HTTP://localhost:8080/>
 
@@ -99,15 +99,29 @@ $ npm run test
 - HTTP Method: **GET**
 - Path: /
 
+
 ★ Retorna uma lista de Notícias
 
 - HTTP Method: **GET**
-- Path: /noticia
+- Path: /noticia/
 
-★ Permite criar uma Notícia;
+
+★ Retorna uma Notícia pelo Id
+
+- HTTP Method: **GET**
+- Path: /noticia/:id
+
+
+★ Retorna uma Notícia pelo Título
+
+- HTTP Method: **GET**
+- Path: /noticia/titulo/:titulo
+
+
+★ Permite criar uma Notícia
 
 - HTTP Method: **POST**
-- Path: /noticia
+- Path: /noticia/create
 - _Body_ de exemplo:
 
 ```JSON
@@ -117,6 +131,27 @@ $ npm run test
   "dataPublicacao": "2021/04/08"
 }
 ```
+
+
+★ Permite criar uma Notícia
+
+- HTTP Method: **PUT**
+- Path: /noticia/update/:id
+- _Body_ de exemplo:
+
+```JSON
+{
+  "titulo": "Brasil está vacinado",
+  "conteudo": "Foram finalizadas as aplicações de vacinas aos brasileiros",
+  "dataPublicacao": "2021/04/08"
+}
+```
+
+
+★ Permite deletar uma Notícia pelo Id
+
+- HTTP Method: **DELETE**
+- Path: /noticia/delete/:id
 
 ---
 

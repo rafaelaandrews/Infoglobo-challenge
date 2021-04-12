@@ -12,27 +12,11 @@
 
 - [Pré-Requisitos](#Pré-requisitos)
 - [Execução](#Execução)
-  - [Desenvolvimento](#Desenvolvimento)
-
   - [Produção (DockerFile)](#Produção(DockerFile))
 - [Tecnologias](#tecnologias)
 
 ---
 
-## Instalação
-
-```bash
-# Clone este repositório
-$ git clone <https://github.com/rafaelaandrews/Infoglobo-challenge>
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge
-
-# Instale as dependências
-$ npm install
-```
-
----
 
 ## Pré-requisitos
 
