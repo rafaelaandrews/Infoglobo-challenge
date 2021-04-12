@@ -1,7 +1,7 @@
 {
   "name": "api-infoglobo",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "s.js",
   "author": "Rafaela Andrews",
   "license": "MIT",
   "dependencies": {

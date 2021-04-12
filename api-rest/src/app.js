@@ -8,11 +8,9 @@ const index = require("./routes/index");
 const noticiaR = require('./routes/noticia.router'); 
 
 const mongoose = require('mongoose');
-let url = 'mongodb+srv://admin:JKXricpP9BWqe4k@cluster0.y6j52.mongodb.net/noticia?retryWrites=true&w=majority';
-mongoose.connect(url);
-let db = mongoose.connection;
+let connection = 'mongodb://db-infoglobo:27017/noticia';
 
-db.on('error', console.error.bind(console, 'Erro na Ligação ao MongoDB'));
+mongoose.connect(connection);
 
 app.use(express.json());
 app.use(cors());
