@@ -7,6 +7,8 @@ router.get('/', noticiaController.findAll);
 
 router.get('/:id', noticiaController.findById);
 
+router.get('/titulo/:titulo', noticiaController.findByTitulo);
+
 router.post('/create', noticiaController.create);
 
 router.put('/update/:id', noticiaController.update);
