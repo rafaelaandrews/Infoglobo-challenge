@@ -1,37 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, useLocation } from "react-router-dom";
 
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
-import { newsUpdated } from "../news/SliceNews";
+import { newsAdded } from "./newsSlice";
 
-export function EditNews() {
-  const { pathname } = useLocation();
-  const newsId = parseInt(pathname.replace("/edit-news", ""));
-
-  const news = useSelector((state) =>
-    state.listNews.entities.find((news) => news.id === newsId)
-  );
-
+export function AddNews() {
   const dispatch = useDispatch();
   const history = useHistory();
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [publicationDate, setPublicationDate] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState(null);
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleContent = (e) => setContent(e.target.value);
-  const handlePublicationDate = (e) => setPublicationDate(e.target.value);
+  const handleDate = (e) => setDate(e.target.value);
+
+  const newsAmount = useSelector((state) => state.news.entities.length);
 
   const handleClick = () => {
-    if (title && content && publicationDate) {
+    if (title && content && date) {
       dispatch(
-        newsUpdated({
-          id: newsId,
+        newsAdded({
+          id: newsAmount + 1,
           title,
           content,
-          publicationDate
+          date
         })
       );
 
@@ -40,16 +35,20 @@ export function EditNews() {
     } else {
       setError("Fill in all fields");
     }
+
+    setTitle("");
+    setContent("");
+    setDate("");
   };
 
   return (
     <div className="container">
       <div className="row">
-        <h1>Editar Notícia</h1>
+        <h1>Adicionar Notícia</h1>
       </div>
       <div className="row">
         <div className="three columns">
-        <label htmlFor="titleInput">Título</label>
+          <label htmlFor="titleInput">Título</label>
           <input
             className="u-full-width"
             type="text"
@@ -65,13 +64,13 @@ export function EditNews() {
             onChange={handleContent}
             value={content}
           />
-          <label htmlFor="publicationDateInput">Data de publicação</label>
+          <label htmlFor="dateInput">Data de Publicação</label>
           <input
             className="u-full-width"
             type="date"
-            id="publicationDateInput"
-            onChange={handlePublicationDate}
-            value={publicationDate}
+            id="dateInput"
+            onChange={handleDate}
+            value={date}
           />
           {error && error}
           <button onClick={handleClick} className="button-primary">

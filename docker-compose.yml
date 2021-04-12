@@ -5,7 +5,7 @@ services:
     ports:
       - '3000:3000'
   ui:
-    build: ./web/infoglobo
+    build: ./web
     ports:
       - '80:80'
     depends_on:

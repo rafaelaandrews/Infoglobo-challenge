@@ -2,14 +2,13 @@ import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import { AddNews } from "./features/news/AddNews";
 import { EditNews } from "./features/news/EditNews";
-import { ListNews } from "./features/news/ListNews";
-
 import React from "react";
+import { NewsList } from "./features/news/NewsList";
 
 export default function App() {
   return (
     <Router>
-      <div className="App">
+      <div>
         <Switch>
           <Route path="/add-news">
             <AddNews />
@@ -18,7 +17,7 @@ export default function App() {
             <EditNews />
           </Route>
           <Route path="/">
-            <ListNews />
+            <NewsList />
           </Route>
         </Switch>
       </div>
