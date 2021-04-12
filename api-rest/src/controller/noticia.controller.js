@@ -20,6 +20,16 @@ exports.findById = async (req, res, next) => {
 	}
 };
 
+exports.findByTitulo = async (req, res, next) => {
+	try {
+		let result = await noticiaService.findByTitulo(req, res, next);
+	
+		res.status(200).send(result);
+	} catch (error) {
+		next(error);
+	}
+};
+
 exports.findAll = async (req, res, next) => {
 	try {
 		let result = await noticiaService.findAll(req, res, next);

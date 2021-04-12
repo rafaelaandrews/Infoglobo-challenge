@@ -1,15 +1,15 @@
-import App from "./App";
-import { Provider } from "react-redux";
 import React from "react";
 import ReactDOM from "react-dom";
-import { fetchNews } from "./features/news/newsSlice";
-import store from "./store";
+import { BrowserRouter } from "react-router-dom";
 
-store.dispatch(fetchNews());
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <Provider store={store}>
+  <BrowserRouter>
     <App />
-  </Provider>,
+  </BrowserRouter>,
   document.getElementById("root")
 );
+
+serviceWorker.unregister();
