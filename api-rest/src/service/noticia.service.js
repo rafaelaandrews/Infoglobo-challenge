@@ -34,6 +34,15 @@ async function findById(req, res, next) {
 	})
 }
 
+async function findByTitulo(req, res, next) {
+	validateRequestTitulo(req);
+
+	return await Noticia.find(req.params, (err, noticia) => {
+		if (err) return next(err);
+		res.send(noticia);
+	})
+}
+
 async function findAll(req, res, next) {
 	return await Noticia.find((err, noticias) => {
 		if (err) return next(err);
@@ -57,6 +66,13 @@ function validateRequestId(req) {
 	return true;
 }
 
+function validateRequestTitulo(req) {
+	if (!req.params.titulo) {
+		throw errorHandler.preconditionFailed("O titulo precisa ser informado.");
+	}
+	return true;
+}
+
 function validateRequestParams(req) {
 	if (!req.body.titulo && !req.body.conteudo && !req.body.dataPublicacao) {
 		throw errorHandler.preconditionFailed("Os parâmetros titulo, conteudo e dataPublicacao são obrigatórios.");
@@ -68,6 +84,11 @@ module.exports = {
 	create,
 	updateById,
 	findById,
+	findByTitulo,
 	findAll,
-	deleteById
+	deleteById,
+	validateRequestId,
+	validateRequestTitulo,
+	validateRequestParams
 }
+
