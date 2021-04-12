@@ -133,7 +133,7 @@ $ npm run test
 ```
 
 
-★ Permite criar uma Notícia
+★ Permite editar uma Notícia
 
 - HTTP Method: **PUT**
 - Path: /noticia/update/:id
