@@ -2,14 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { useState } from "react";
-import { newsUpdated } from "../news/SliceNews";
+import { newsUpdated } from "./newsSlice";
 
 export function EditNews() {
   const { pathname } = useLocation();
-  const newsId = parseInt(pathname.replace("/edit-news", ""));
+  const newsId = parseInt(pathname.replace("/edit-news/", ""));
 
   const news = useSelector((state) =>
-    state.listNews.entities.find((news) => news.id === newsId)
+    state.news.entities.find((news) => news.id === newsId)
   );
 
   const dispatch = useDispatch();
@@ -17,21 +17,21 @@ export function EditNews() {
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [publicationDate, setPublicationDate] = useState("");
+  const [date, setDate] = useState("");
   const [error, setError] = useState(null);
 
   const handleTitle = (e) => setTitle(e.target.value);
   const handleContent = (e) => setContent(e.target.value);
-  const handlePublicationDate = (e) => setPublicationDate(e.target.value);
+  const handleDate = (e) => setDate(e.target.value);
 
   const handleClick = () => {
-    if (title && content && publicationDate) {
+    if (title && content && date) {
       dispatch(
         newsUpdated({
           id: newsId,
           title,
           content,
-          publicationDate
+          date
         })
       );
 
@@ -49,7 +49,7 @@ export function EditNews() {
       </div>
       <div className="row">
         <div className="three columns">
-        <label htmlFor="titleInput">Título</label>
+          <label htmlFor="titleInput">Título</label>
           <input
             className="u-full-width"
             type="text"
@@ -65,13 +65,13 @@ export function EditNews() {
             onChange={handleContent}
             value={content}
           />
-          <label htmlFor="publicationDateInput">Data de publicação</label>
+          <label htmlFor="dateInput">Data de publicação</label>
           <input
             className="u-full-width"
             type="date"
-            id="publicationDateInput"
-            onChange={handlePublicationDate}
-            value={publicationDate}
+            id="dateInput"
+            onChange={handleDate}
+            value={date}
           />
           {error && error}
           <button onClick={handleClick} className="button-primary">

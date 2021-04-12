@@ -1,7 +1,8 @@
 # API REST de Notícias
 
-### Projeto composto por um frontend em React e o backend em Node.js com acesso remoto ao MongoDB. 
-### Este projeto foi proposto durante o processo seletivo para vaga de desenvolvedor fullStack na Infoglobo. ### Para rodar o backend e o frontend individualmente, acesse o README.md de cada um.
+### Projeto composto por um frontend em React e o backend em Node.js com acesso remoto ao MongoDB. Este projeto foi proposto durante o processo seletivo para vaga de desenvolvedor fullStack na Infoglobo. 
+
+### Para rodar o backend e o frontend individualmente, acesse o README.md de cada um.
 
 <br/>
 
