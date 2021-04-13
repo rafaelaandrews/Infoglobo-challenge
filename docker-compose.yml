@@ -1,7 +1,5 @@
-version: '2'
-networks: 
-  infra-infoglobo:
-    driver: bridge
+version: '3.6'
+
 services:
   mongo:
     container_name: db-infoglobo
@@ -22,9 +20,11 @@ services:
   apache:
     restart: always
     container_name: apache-web
-    image: web
+    build: ./web
     ports: 
       - "3001:80"
     volumes:
       - ./apache/:/usr/local/apache2/htdocs/
-  
+networks: 
+  infra-infoglobo:
+    driver: bridge
