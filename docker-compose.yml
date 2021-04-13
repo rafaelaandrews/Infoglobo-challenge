@@ -1,13 +1,30 @@
-version: '2'
+version: '3.6'
+
 services:
+  mongo:
+    container_name: db-infoglobo
+    image: mongo
+    ports:
+      - 27017:27017
+    networks: 
+      - infra-infoglobo
   api:
+    container_name: api-infoglobo
     build: ./api-rest
     ports:
       - '3000:3000'
-  ui:
-    build: ./web
-    ports:
-      - '80:80'
+    networks:
+      - infra-infoglobo
     depends_on:
-      - api
-  
+      - mongo  
+  apache:
+    restart: always
+    container_name: apache-web
+    build: ./web
+    ports: 
+      - "3001:80"
+    volumes:
+      - ./apache/:/usr/local/apache2/htdocs/
+networks: 
+  infra-infoglobo:
+    driver: bridge

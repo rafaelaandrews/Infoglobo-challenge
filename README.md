@@ -1,14 +1,12 @@
 # API REST de Notícias
 
-### Projeto composto por um frontend em React e o backend em Node.js com acesso remoto ao MongoDB. Este projeto foi proposto durante o processo seletivo para vaga de desenvolvedor fullStack na Infoglobo. 
+### Projeto composto por um frontend em React e o backend em Node.js com acesso ao MongoDB. Este projeto foi proposto durante o processo seletivo para vaga de desenvolvedor fullStack na Infoglobo. 
 
 ### Para rodar o backend e o frontend individualmente, acesse o README.md de cada um.
 
 <br/>
 
 ## 🔗 Tabela de conteúdo
-
-- [Instalação](#Instalação)
 
 - [Pré-Requisitos](#Pré-requisitos)
 - [Execução](#Execução)
@@ -30,16 +28,27 @@ Antes de começar, você precisará ter instalado em sua máquina as seguintes f
 ### Produção(DockerFile)
 
 ```bash
-# Acesse a pasta do projeto no terminal/cmd
-$ cd Infoglobo-challenge
+
+$ cd Infoglobo-challenge/api-rest
+
+$ npm install
+
+$ cd ..
+
+$ cd Infoglobo-challenge/web
+
+$ npm install
+
+$ cd ..
 
 # Construa sua imagem docker
 $ docker-compose up -d
 
-# Acesse <HTTP://localhost:80/>
+# Acesse <HTTP://localhost:3001/>
 
 # Para parar a execução:
 $ docker-compose stop 
+
 ```
 
 ---
