@@ -1,16 +1,16 @@
 const noticiaService = require('../service/noticia.service');
 
-exports.create = async (req, res, next) => {
+exports.create = async (req, next) => {
 	try {
-		let result = await noticiaService.create(req, res, next);
+		await noticiaService.create(req, res, next);
 	
-		res.status(201).send(result);
+		res.status(201).send('Notícia criada com sucesso');
 	} catch (error) {
 		next(error);
 	}
 };
 
-exports.findById = async (req, res, next) => {
+exports.findById = async (req, next) => {
 	try {
 		let result = await noticiaService.findById(req, res, next);
 	
@@ -20,7 +20,7 @@ exports.findById = async (req, res, next) => {
 	}
 };
 
-exports.findByTitulo = async (req, res, next) => {
+exports.findByTitulo = async (req, next) => {
 	try {
 		let result = await noticiaService.findByTitulo(req, res, next);
 	
@@ -30,7 +30,7 @@ exports.findByTitulo = async (req, res, next) => {
 	}
 };
 
-exports.findAll = async (req, res, next) => {
+exports.findAll = async (req, next) => {
 	try {
 		let result = await noticiaService.findAll(req, res, next);
 	
@@ -40,21 +40,21 @@ exports.findAll = async (req, res, next) => {
 	}
 };
 
-exports.update = async (req, res, next) => {
+exports.update = async (req, next) => {
 	try {
-		let result = await noticiaService.updateById(req, res, next);
-	
-		res.status(200).send(result);
+		await noticiaService.updateById(req, res, next);
+
+		res.status(200).send('Notícia atualizada com sucesso');
 	} catch (error) {
 		next(error);
 	}
 };
 
-exports.delete = async (req, res, next) => {
+exports.delete = async (req, next) => {
 	try {
-		let result = await noticiaService.deleteById(req, res, next);
-	
-		res.status(200).send(result);
+		await noticiaService.deleteById(req, res, next);
+
+		res.status(200).send('Notícia deletada com sucesso');
 	} catch (error) {
 		next(error);
 	}

@@ -44,7 +44,7 @@ $ cd ..
 # Construa sua imagem docker
 $ docker-compose up -d
 
-# Acesse <HTTP://localhost:3001/>
+# Acesse <HTTP://localhost:80/>
 
 # Para parar a execução:
 $ docker-compose stop 

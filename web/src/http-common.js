@@ -3,6 +3,6 @@ import axios from "axios";
 export default axios.create({
   baseURL: "http://localhost:3000/noticia",
   headers: {
-    "Content-type": "application/json"
+    accept: 'application/json, text/plain, */*',
   }
 });
