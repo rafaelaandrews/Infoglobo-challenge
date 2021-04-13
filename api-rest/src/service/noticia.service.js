@@ -1,7 +1,7 @@
 const Noticia = require('../model/noticia.model');
 const errorHandler = require('../core/error');
 
-async function create(req, res, next) {
+async function create(req, next) {
 	validateRequestParams(req);
 
 	let noticia = new Noticia({
@@ -12,50 +12,44 @@ async function create(req, res, next) {
 
 	return await noticia.save((err) => {
 		if (err) return next(err);
-		res.send('Notícia criada com sucesso')
 	})
 }
 
-async function updateById(req, res, next) {
+async function updateById(req, next) {
 	validateRequestId(req);
 
 	return await Noticia.findByIdAndUpdate(req.params.id, { $set: req.body }, (err) => {
 		if (err) return next(err);
-		res.send('Notícia atualizada com sucesso');
 	});
 }
 
-async function findById(req, res, next) {
+async function findById(req, next) {
 	validateRequestId(req);
 
 	return await Noticia.findById(req.params.id, (err, noticia) => {
 		if (err) return next(err);
-		res.send(noticia);
 	})
 }
 
-async function findByTitulo(req, res, next) {
+async function findByTitulo(req, next) {
 	validateRequestTitulo(req);
 
 	return await Noticia.find(req.params, (err, noticia) => {
 		if (err) return next(err);
-		res.send(noticia);
 	})
 }
 
-async function findAll(req, res, next) {
+async function findAll(req, next) {
 	return await Noticia.find((err, noticias) => {
 		if (err) return next(err);
-		res.send(noticias);
 	})
 }
 
-async function deleteById(req, res, next) {
+async function deleteById(req, next) {
 	validateRequestId(req);
 
 	return await Noticia.findByIdAndRemove(req.params.id, (err) => {
 		if (err) return next(err);
-		res.send('Notícia deletada com sucesso');
 	})
 }
 
